@@ -20,14 +20,20 @@
     } else {
       document.getElementById('content').innerHTML = `
         <h1>Markdown from URL</h1>
-        <input type="text" id="url" placeholder="Enter URL" />
-        <button onclick="reload()">Render Markdown</button>
+        <p>Enter a URL to render your Markdown file to HTML as a full page. No fluff.</p>
+        <form onsubmit="reload(event)">
+          <input type="text" id="url" placeholder="Enter URL" />
+          <button type="submit">Render Markdown</button>
+        </form>
+        <p>
+          <a href="https://github.com/levivoelz/markdown-from-url" target="_blank">Source code</a>
+        </p>
       `;
     }
 
-    function reload() {
-      const url = document.getElementById('url').value;
-      window.location.href = `?url=${url}`;
+    function reload(event) {
+      event.preventDefault();
+      window.location.href = `?url=${event.target.elements.url.value}`;
     }
   </script>
 </body>
