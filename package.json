@@ -1,0 +1,14 @@
+{
+  "name": "markdown-from-url",
+  "version": "1.0.0",
+  "scripts": {
+    "serve": "serve .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Levi Voelz <levi.voelz@gmail.com>",
+  "license": "MIT",
+  "description": "Render Markdown from a URL",
+  "devDependencies": {
+    "serve": "^14.2.3"
+  }
+}

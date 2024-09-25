@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Render Markdown from a URL</title>
+  <!-- <meta name="description" content="Render Markdown from a URL"> -->
+</head>
+
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const urlFromParams = new URLSearchParams(window.location.search).get('url');
+    if (urlFromParams) {
+      fetch(urlFromParams)
+        .then(response => response.text())
+        .then(text => {
+          document.getElementById('content').innerHTML = marked.parse(text);
+        });
+    } else {
+      document.getElementById('content').innerHTML = `
+        <h1>Markdown from URL</h1>
+        <input type="text" id="url" placeholder="Enter URL" />
+        <button onclick="reload()">Render Markdown</button>
+      `;
+    }
+
+    function reload() {
+      const url = document.getElementById('url').value;
+      window.location.href = `?url=${url}`;
+    }
+  </script>
+</body>
+
+</html>
